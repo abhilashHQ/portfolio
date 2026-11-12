@@ -13,7 +13,7 @@ export const config = {
   },
 
   social: {
-    github: "https://github.com/abhilash2429",
+    github: "https://github.com/abhilashHQ",
     linkedin: "https://www.linkedin.com/in/abhilashreddymanda",
     instagram: "",
     discord: "https://discordapp.com/users/abhilash_2429",

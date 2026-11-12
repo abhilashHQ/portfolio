@@ -15,7 +15,7 @@ const TOKEN_PATH =
 
 const AgentSketch = ({ style }: { style?: CSSProperties }) => (
   <DeskObject
-    href="https://github.com/abhilash2429/DeepRead"
+    href="https://github.com/abhilashHQ/DeepRead"
     label="DeepRead's cited Q&A agent"
     className="sketch settle"
     faceClassName="grid-paper"

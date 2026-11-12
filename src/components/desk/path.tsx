@@ -16,13 +16,13 @@ const STOPS: Stop[] = [
     when: "Nov 2025",
     title: "Anon-Chat",
     line: "Stateless Node.js WebSockets holding 1,000+ concurrent connections.",
-    href: "https://github.com/abhilash2429/Anon-chat",
+    href: "https://github.com/abhilashHQ/Anon-chat",
   },
   {
     when: "Feb 2026",
     title: "DeepRead",
     line: "A LangGraph pipeline that turns ML papers into implementation briefs.",
-    href: "https://github.com/abhilash2429/DeepRead",
+    href: "https://github.com/abhilashHQ/DeepRead",
   },
   {
     when: "Mar 2026",

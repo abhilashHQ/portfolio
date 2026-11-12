@@ -19,7 +19,7 @@ const GitHubContributions = () => {
       </h2>
       <div className="w-full">
         <GitHubCalendar
-          username="abhilash2429"
+          username="abhilashHQ"
           colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
           fontSize={12}
           blockSize={12}
