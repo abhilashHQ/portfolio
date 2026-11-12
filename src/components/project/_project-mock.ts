@@ -42,7 +42,7 @@ const projects: TProject[] = [
     stacks: ["Python", "neatlogs", "Bedrock", "OpenCode", "DuckDB", "FastAPI"],
     caseStudy: true,
     onDesk: true,
-    repoUrl: "https://github.com/abhilash2429/BladeRunner",
+    repoUrl: "https://github.com/abhilashHQ/BladeRunner",
   },
   {
     slug: "macky",
@@ -55,7 +55,7 @@ const projects: TProject[] = [
     stacks: ["Swift", "GPT-Realtime-2", "Cloudflare Workers", "Azure AI Foundry", "MCP"],
     onDesk: true,
     cover: Macky,
-    repoUrl: "https://github.com/abhilash2429/Macky",
+    repoUrl: "https://github.com/abhilashHQ/Macky",
     deployedURL: "https://heymacky.vercel.app/",
     demoUrl: "https://youtu.be/SIRyFt7ISx0",
   },
@@ -70,7 +70,7 @@ const projects: TProject[] = [
     stacks: ["Python", "OpenEnv", "GRPO", "Qwen2.5-3B", "Gradio"],
     caseStudy: true,
     onDesk: true,
-    repoUrl: "https://github.com/abhilash2429/overSight_Arena",
+    repoUrl: "https://github.com/abhilashHQ/overSight_Arena",
     deployedURL: "https://huggingface.co/spaces/abhilash242299/oversight-arena",
   },
   {
@@ -86,7 +86,7 @@ const projects: TProject[] = [
     onDesk: true,
     cover: EnterpriseSearch,
     previewVideo: "/previews/enterprise-search.mp4",
-    repoUrl: "https://github.com/abhilash2429/enterprise-search-rag",
+    repoUrl: "https://github.com/abhilashHQ/enterprise-search-rag",
   },
   {
     slug: "m-rag",
@@ -98,7 +98,7 @@ const projects: TProject[] = [
     date: "2026-08",
     stacks: ["Python", "FastAPI", "FAISS", "MinerU", "Azure OpenAI"],
     onDesk: true,
-    repoUrl: "https://github.com/abhilash2429/Multimodal-Rag",
+    repoUrl: "https://github.com/abhilashHQ/Multimodal-Rag",
   },
   {
     slug: "deepread",
@@ -108,7 +108,7 @@ const projects: TProject[] = [
     date: "2026-02",
     stacks: ["LangGraph", "LangChain", "FastAPI", "Azure OpenAI", "PostgreSQL"],
     cover: DeepRead,
-    repoUrl: "https://github.com/abhilash2429/DeepRead",
+    repoUrl: "https://github.com/abhilashHQ/DeepRead",
     deployedURL: "https://deep-read-seven.vercel.app/",
   },
   {
@@ -117,7 +117,7 @@ const projects: TProject[] = [
     summary: "RL environment where an agent resolves merge conflicts block by block. OpenEnv.",
     date: "2026-03",
     stacks: ["Python", "OpenEnv", "FastAPI"],
-    repoUrl: "https://github.com/abhilash2429/GitMergeEnv",
+    repoUrl: "https://github.com/abhilashHQ/GitMergeEnv",
   },
   {
     slug: "aftercare",
@@ -127,7 +127,7 @@ const projects: TProject[] = [
     date: "2026-09",
     stacks: ["Next.js", "AWS Lambda", "Textract", "Bedrock", "DynamoDB", "Polly"],
     cover: AfterCare,
-    repoUrl: "https://github.com/abhilash2429/afterCare",
+    repoUrl: "https://github.com/abhilashHQ/afterCare",
     deployedURL: "https://main.d2nozesb14q5me.amplifyapp.com",
   },
   {
@@ -137,7 +137,7 @@ const projects: TProject[] = [
     date: "2026-03",
     stacks: ["XGBoost", "LangChain", "Celery", "FastAPI"],
     cover: IntelliCredit,
-    repoUrl: "https://github.com/abhilash2429/Intelli-Credit",
+    repoUrl: "https://github.com/abhilashHQ/Intelli-Credit",
     deployedURL: "https://intelli-credit-kappa.vercel.app/",
   },
   {
@@ -147,7 +147,7 @@ const projects: TProject[] = [
     date: "2025-11",
     stacks: ["Node.js", "WebSockets", "Next.js", "TypeScript"],
     cover: AnonChat,
-    repoUrl: "https://github.com/abhilash2429/Anon-chat",
+    repoUrl: "https://github.com/abhilashHQ/Anon-chat",
     deployedURL: "https://anon-chat2.vercel.app/",
   },
 ];

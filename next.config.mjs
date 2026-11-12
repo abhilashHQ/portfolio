@@ -33,7 +33,7 @@ const nextConfig = {
       },
       {
         source: "/github",
-        destination: "https://github.com/abhilash2429",
+        destination: "https://github.com/abhilashHQ",
         permanent: true,
       },
       {
