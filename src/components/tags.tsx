@@ -20,7 +20,7 @@ export const Tag = ({ tag, count }: { tag: string; count?: number }) => {
       <Link
         className={buttonVariants({
           variant: "link",
-          className: "h-full !p-0 text-muted-foreground hover:text-pen",
+          className: "h-full !p-0 text-ring",
         })}
         href={`/tags/${slug(tag)}`}
         aria-label={`Explore tag ${tag}`}

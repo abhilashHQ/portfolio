@@ -1,13 +1,21 @@
 import { posts } from "#site/content";
 import { getSEOTags } from "~/lib/seo";
-import { sortPosts } from "~/lib/utils";
 import BlogPageClient from "./blog-page-client";
 
 export const metadata: ReturnType<typeof getSEOTags> = getSEOTags({
-  title: "Writing",
+  title: `All Publications`,
   description:
-    "Notes from building AI agents: what worked, what didn't, and the numbers behind both.",
+    "Welcome to my digital garden where I share what I'm learning about shipping great products, becoming a better developer and growing a career in tech.",
   canonicalUrlRelative: "/blog",
+  keywords: [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Testing",
+    "Career",
+    "Software Development",
+    "Abhilash's Blog",
+  ],
 });
 
 const BlogPage = async ({
@@ -15,10 +23,12 @@ const BlogPage = async ({
 }: {
   searchParams: Promise<{ search: string | undefined }>;
 }) => {
-  const { search } = await searchParams;
-  const sortedPosts = sortPosts(posts.filter((post) => post.published));
+  const resolvedSearchParams = await searchParams;
+  const sortedPosts = [...posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
 
-  return <BlogPageClient posts={sortedPosts} searchTerm={search} />;
+  return <BlogPageClient posts={sortedPosts} searchTerm={resolvedSearchParams.search} />;
 };
 
 export default BlogPage;

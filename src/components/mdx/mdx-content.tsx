@@ -5,7 +5,6 @@ import { ClientTweetCard } from "~/components/ui/client-tweet-card";
 import { YouTubeEmbed } from "@next/third-parties/google";
 import CustomImage from "./custom-image";
 import CustomLink from "./custom-link";
-import StagePipeline from "./stage-pipeline";
 
 const sharedComponents = {
   CustomImage,
@@ -13,7 +12,6 @@ const sharedComponents = {
   YouTubeEmbed,
   Callout,
   Tweet: ClientTweetCard,
-  StagePipeline,
 };
 
 interface MDXProps {

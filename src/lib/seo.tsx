@@ -21,17 +21,16 @@ export const getSEOTags = ({
       "applied AI engineer",
       "AI engineer",
       "AI agents",
-      "agentic AI",
-      "multi-agent systems",
-      "MCP",
-      "voice agents",
+      "LLM evaluation",
       "RAG",
+      "backend engineer",
+      "system design",
       "remote",
     ],
     applicationName: config.appName,
 
     icons: {
-      icon: "/mark.svg",
+      icon: "/logo.png",
       apple: "/logo.png",
     },
 

@@ -1,31 +1,72 @@
-import { posts } from "#site/content";
-import { PostList } from "~/components/post";
+import { Post, posts } from "#site/content";
+import { CustomLink } from "~/components/mdx";
 import { Tag } from "~/components/tags";
-import { SectionHead } from "~/components/ui/row-list";
-import { getAllTags, sortPosts, sortedTagsCount } from "~/lib/utils";
+import { getAllTags, sortedTagsCount } from "~/lib/utils";
+
+type OrganizedPost = Record<string, Post[]>;
 
 const TagsPage = () => {
-  const published = sortPosts(posts.filter((post) => post.published));
-  const tags = getAllTags(published);
+  const tags = getAllTags(posts);
   const sortedTags = sortedTagsCount(tags);
 
-  return (
-    <div className="col pb-10 pt-28 sm:pt-32">
-      <SectionHead as="h1" title="Tags" />
-      <ul role="list" id="main-nav" className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-        {sortedTags.map((tag) => (
-          <Tag key={tag} tag={tag} count={tags[tag]} />
-        ))}
-      </ul>
+  function organizePostsByTag(posts: Post[]): OrganizedPost {
+    const organizedPosts: { [key: string]: Post[] } = {};
 
-      {[...sortedTags].sort().map((tag) => (
-        <section key={tag} aria-labelledby={`tag-${tag}`} className="mt-12">
-          <h2 id={`tag-${tag}`} className="font-serif text-2xl">
-            #{tag}
-          </h2>
-          <PostList posts={published.filter((post) => post.tags.includes(tag))} />
-        </section>
-      ))}
+    posts.forEach((post) => {
+      post.tags.forEach((tag) => {
+        if (!organizedPosts[tag]) {
+          organizedPosts[tag] = [];
+        }
+        organizedPosts[tag].push(post);
+      });
+    });
+
+    const sortedKeys = Object.keys(organizedPosts).sort();
+    const result: OrganizedPost = {};
+
+    sortedKeys.forEach((key) => {
+      result[key] = organizedPosts[key];
+    });
+
+    return result;
+  }
+
+  const result: OrganizedPost = organizePostsByTag(posts);
+
+  return (
+    <div className="!mt-8 grid items-start gap-4 md:grid-cols-3">
+      <main id="main-content" className="order-2 md:order-1 md:col-span-2">
+        <h3 className="mb-4 text-lg font-medium">Posts by Tag (A-Z)</h3>
+
+        {Object.keys(result).map((tag) => (
+          <section
+            key={tag}
+            aria-labelledby={`posts-by-tag ${tag}-title`}
+            className="mb-4 space-y-2 border-b pb-4 last:border-none"
+          >
+            <h3 id={`${tag}-title`} className="text-base font-medium capitalize">
+              {tag}
+            </h3>
+
+            <ul role="list" className="space-y-1 sm:list-inside sm:list-disc">
+              {result[tag].map((post, index) => (
+                <li key={index} className="sm:ps-2">
+                  <CustomLink href={`/blog/${post.slugAsParams}`}>{post.title}</CustomLink>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </main>
+
+      <div className="top-4 order-1 space-y-1 rounded-md bg-neutral-800/50 p-2 text-xl sm:sticky md:order-2">
+        <h2 className="text-center uppercase">All Tags</h2>
+        <ul role="list" className="flex flex-wrap justify-center gap-2 pb-1">
+          {sortedTags.map((tag, index) => (
+            <Tag key={index} tag={tag} count={tags[tag]} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
