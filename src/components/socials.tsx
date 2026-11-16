@@ -5,7 +5,7 @@ import { FiGithub } from "react-icons/fi";
 import { TbBrandDiscord } from "react-icons/tb";
 import config from "~/config";
 import { cn } from "~/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 const socialsIcons = [
   {

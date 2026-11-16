@@ -7,9 +7,9 @@ import { FaExternalLinkAlt, FaYoutube } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import { cn } from "~/lib/utils";
-import { CustomLink } from "~/components/mdx";
-import { typo } from "~/components/ui/typograpghy";
-import { TProject } from "~/components/project/_project-mock";
+import { CustomLink } from "../mdx";
+import { typo } from "../ui/typograpghy";
+import { TProject } from "./_project-mock";
 
 type ProjectItemProps = { index: number } & TProject;
 
@@ -18,13 +18,14 @@ const linkClass = "!p-0 h-full hover:!text-foreground !flex items-center gap-2 !
 const ProjectItem: React.FC<ProjectItemProps> = ({
   index,
   title,
-  summary: description,
+  description,
   deployedURL,
   demoUrl,
   cover,
   previewVideo,
-  slug,
+  coverPan,
   stacks,
+  isRepo,
   repoUrl,
 }) => {
   const reduced = useReducedMotion();
@@ -88,11 +89,11 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             alt={`${title} screenshot`}
             priority={index < 2}
             placeholder={typeof cover !== "string" ? "blur" : undefined}
-            src={cover!}
+            src={cover}
             sizes="(min-width: 768px) 50vw, 100vw"
             className={cn(
               "size-full object-cover",
-              slug === "aftercare"
+              coverPan
                 ? "object-top transition-[object-position] duration-[4000ms] ease-in-out motion-safe:group-hover/card:object-bottom"
                 : "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover/card:scale-[1.04]",
             )}
@@ -177,7 +178,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
               </CustomLink>
             )}
 
-            {repoUrl && (
+            {isRepo && (
               <CustomLink
                 aria-label={`visit ${title} Github Repo`}
                 href={repoUrl as string}

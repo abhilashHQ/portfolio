@@ -1,3 +1,5 @@
+import { createId } from "@paralleldrive/cuid2";
+
 export type TContribution = {
   id: string;
   repo: string;
@@ -9,7 +11,7 @@ export type TContribution = {
 
 const contributions: TContribution[] = [
   {
-    id: "kornia-5361",
+    id: createId(),
     repo: "kornia/kornia",
     number: 5361,
     title: "Fix torch.compile on augmentation containers",
@@ -17,7 +19,7 @@ const contributions: TContribution[] = [
     url: "https://github.com/kornia/kornia/pull/5361",
   },
   {
-    id: "pipecat-6024",
+    id: createId(),
     repo: "pipecat-ai/pipecat",
     number: 6024,
     title: "Keep the OpenAI Realtime receive loop alive",
