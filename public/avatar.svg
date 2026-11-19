@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="marker" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="#000" />
+  <g filter="url(#marker)" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M114 196 C 110 262, 150 320, 204 328 C 256 322, 292 266, 288 196" />
+    <path d="M114 222 c -26 -8 -30 34 4 38" />
+    <path d="M288 220 c 26 -8 30 34 -4 38" />
+    <path d="M100 206 q -30 -42 6 -74 q -12 -48 42 -58 q 18 -42 64 -24 q 38 -32 74 6 q 52 -4 52 52 q 36 28 8 74 q 4 18 -14 26" />
+    <path d="M110 204 q 8 -32 32 -22 q 6 -30 36 -14 q 16 -28 42 -4 q 22 -24 42 4 q 26 -12 32 20 q 18 2 12 30" />
+    <path d="M132 140 c -4 -22 24 -28 26 -8" />
+    <path d="M176 112 c -2 -22 28 -24 26 -2" />
+    <path d="M226 106 c 4 -20 30 -14 24 6" />
+    <path d="M268 140 c 6 -18 30 -8 20 10" />
+    <path d="M150 168 c 0 -16 20 -18 22 -4" />
+    <path d="M204 150 c 2 -16 22 -14 20 2" />
+    <path d="M250 170 c 4 -14 22 -8 16 6" />
+    <path d="M146 216 l 38 -8" />
+    <path d="M222 204 l 40 10" />
+    <path d="M146 240 q 21 -14 42 0" />
+    <path d="M220 240 q 21 -14 42 0" />
+    <path d="M204 252 q -8 20 6 24" />
+    <path d="M176 292 q 28 14 54 -6" />
+  </g>
+  <g fill="#fff" filter="url(#marker)">
+    <circle cx="168" cy="246" r="8" />
+    <circle cx="242" cy="246" r="8" />
+  </g>
+</svg>

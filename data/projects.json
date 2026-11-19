@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "cookcode",
+    "title": "CookCode",
+    "description": "Coding agent harness built from scratch on a replayable event log. Every run can be resumed, forked and replayed byte for byte. 0.80 on a Terminal-Bench 2.0 slice.",
+    "tags": ["Python", "MCP", "SQLite FTS5", "Gemini", "NVIDIA NIM", "Terminal-Bench"],
+    "date_created": "2026-10-26",
+    "cover": "/covers/CookCode.png",
+    "links": { "repo": "https://github.com/abhilashHQ/CookCode", "live": null, "demo": null }
+  },
+  {
+    "slug": "enterprise-search",
+    "title": "Enterprise Search",
+    "description": "Cited answers over 512K company docs. +20 points over BM25 on a held-out test split (95% CI +15.7 to +24.5).",
+    "tags": ["Python", "Qwen3 Embedding", "Qwen3 Reranker", "Bedrock", "MCP", "Next.js"],
+    "date_created": "2026-10-03",
+    "cover": "/covers/EnterpriseSearch.jpg",
+    "links": { "repo": "https://github.com/abhilashHQ/enterprise-search-rag", "live": null, "demo": null }
+  },
+  {
+    "slug": "macky",
+    "title": "Macky",
+    "description": "macOS voice assistant in the screen notch with push-to-talk real-time streaming, background sub-agent orchestration, and MCP integrations.",
+    "tags": ["Swift", "GPT-Realtime-2", "Cloudflare Workers", "Azure AI Foundry", "MCP"],
+    "date_created": "2026-06-07",
+    "cover": "/covers/Macky.png",
+    "links": { "repo": null, "live": "https://heymacky.vercel.app/", "demo": "https://youtu.be/SIRyFt7ISx0" }
+  },
+  {
+    "slug": "intelli-credit",
+    "title": "Intelli Credit",
+    "description": "AI-powered corporate credit appraisal engine with distributed Celery pipelines and XGBoost risk scoring.",
+    "tags": ["XGBoost", "LangChain", "Celery", "FastAPI"],
+    "date_created": "2026-03-01",
+    "cover": "/covers/IntelliCredit.png",
+    "links": { "repo": "https://github.com/abhilashHQ/Intelli-Credit", "live": "https://intelli-credit-kappa.vercel.app/", "demo": null }
+  },
+  {
+    "slug": "deepread",
+    "title": "DeepRead",
+    "description": "AI system that breaks down ML research papers with a 4-stage LangGraph pipeline and an SSE-streamed PyTorch code Q&A agent.",
+    "tags": ["LangGraph", "LangChain", "FastAPI", "Gemini", "PostgreSQL"],
+    "date_created": "2026-02-18",
+    "cover": "/covers/DeepRead.png",
+    "links": { "repo": "https://github.com/abhilashHQ/DeepRead", "live": "https://deep-read-seven.vercel.app/", "demo": null }
+  },
+  {
+    "slug": "anon-chat",
+    "title": "Anon-Chat",
+    "description": "High-concurrency anonymous chat backend handling 1,000+ simultaneous connections on stateless Node.js WebSockets.",
+    "tags": ["Node.js", "WebSockets", "Next.js", "TypeScript"],
+    "date_created": "2025-11-26",
+    "cover": "/covers/Anon-Chat.png",
+    "links": { "repo": "https://github.com/abhilashHQ/Anon-Chat", "live": "https://anon-chat2.vercel.app/", "demo": null }
+  }
+]
