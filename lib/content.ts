@@ -6,8 +6,8 @@ export const profile = {
   email: "abhilashreddy2429@gmail.com",
   github: "abhilashHQ",
   about: [
-    "20 y/o builder from hyd, india. i build ai agents and the backends that keep them running, from a rough prompt loop to something people use every day. so far that's a coding agent harness from scratch, a voice assistant for the mac notch, and cited search over 512k documents. mostly python.",
-    "open to full-time remote roles in applied ai and backend engineering. if i'm not building, find me out on a run, watching the markets, or reading.",
+    "20 y/o cs student and builder from hyd, india. i build ai agents and the backends that keep them running, from a rough prompt loop to something people use every day. so far that's a coding agent harness from scratch, a voice assistant for the mac notch, and cited search over 512k documents. mostly python.",
+    "open to internships in applied ai and backend engineering. if i'm not building, find me out on a run, watching the markets, or reading.",
   ],
 };
 

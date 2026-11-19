@@ -13,8 +13,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://abhilash24.me"),
-  title: "abhilash | applied ai engineer",
-  description: "Applied AI engineer building agents and the backends behind them. Open to full-time remote roles.",
+  title: "abhilash | builder",
+  description: "20 y/o CS student building AI agents and the backends behind them. Open to internships.",
 };
 
 export default function RootLayout({
