@@ -21,8 +21,8 @@ export function Portfolio({ posts, contributions }: { posts: PostMeta[]; contrib
     <main className="flex flex-1 flex-col items-center px-5 py-8 sm:py-10">
       <section className="relative flex w-full max-w-3xl flex-row items-center gap-5">
         <p className="absolute right-0 top-0 font-mono text-xs text-zinc-500 dark:text-zinc-400">{profile.location}</p>
-        <div className="relative size-24 shrink-0 sm:size-28">
-          <Image src={profile.avatar} alt="abhilash profile" fill priority unoptimized className="object-contain" />
+        <div className="relative size-24 shrink-0 overflow-hidden rounded-lg sm:size-28">
+          <Image src={profile.avatar} alt="abhilash profile" fill priority sizes="112px" className="object-cover" />
         </div>
         <div className="min-w-0">
           <p className="font-mono text-2xl font-bold tracking-tight text-zinc-950 dark:text-zinc-50 sm:text-3xl">

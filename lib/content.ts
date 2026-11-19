@@ -2,7 +2,7 @@ export const profile = {
   name: "abhilash",
   location: "hyd, india",
   tagline: "builder · ai engineer · curious",
-  avatar: "/avatar.svg",
+  avatar: "/avatar.jpg",
   email: "abhilashreddy2429@gmail.com",
   github: "abhilashHQ",
   about: [
