@@ -6,10 +6,22 @@ export const profile = {
   email: "abhilashreddy2429@gmail.com",
   github: "abhilashHQ",
   about: [
-    "20 y/o cs student and builder from hyd, india. i build ai agents and the backends that keep them running, from a rough prompt loop to something people use every day. so far that's a coding agent harness from scratch, a voice assistant for the mac notch, and cited search over 512k documents. mostly python.",
-    "open to internships in applied ai and backend engineering. if i'm not building, find me out on a run, watching the markets, or reading.",
-  ],
+    [
+      "20 y/o cs student and builder from hyd, india. i build ai agents and the backends that keep them running, from a rough prompt loop to something people use every day. so far that's ",
+      { text: "a coding agent harness from scratch", href: "https://github.com/abhilashHQ/CookCode" },
+      ", ",
+      { text: "a voice assistant for the mac notch", href: "https://heymacky.vercel.app/" },
+      ", and ",
+      { text: "cited search over 512k documents", href: "https://github.com/abhilashHQ/enterprise-search-rag" },
+      ". mostly python.",
+    ],
+    [
+      "open to internships in applied ai and backend engineering. if i'm not building, find me out on a run, watching the markets, or reading.",
+    ],
+  ] satisfies AboutSegment[][],
 };
+
+export type AboutSegment = string | { text: string; href: string };
 
 export const socials = [
   { name: "twitter", url: "https://twitter.com/abhilash2429" },
@@ -89,6 +101,9 @@ export type Contribution = {
   title: string;
   status: "merged" | "open";
   url: string;
+  additions: number;
+  deletions: number;
+  date: string;
 };
 
 export const openSource: Contribution[] = [
@@ -98,6 +113,9 @@ export const openSource: Contribution[] = [
     title: "Fix torch.compile on augmentation containers",
     status: "merged",
     url: "https://github.com/kornia/kornia/pull/5361",
+    additions: 42,
+    deletions: 8,
+    date: "2026-10-05",
   },
   {
     repo: "pipecat-ai/pipecat",
@@ -105,5 +123,8 @@ export const openSource: Contribution[] = [
     title: "Keep the OpenAI Realtime receive loop alive",
     status: "open",
     url: "https://github.com/pipecat-ai/pipecat/pull/6024",
+    additions: 216,
+    deletions: 46,
+    date: "2026-10-02",
   },
 ];

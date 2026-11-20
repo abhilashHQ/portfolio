@@ -1,17 +1,77 @@
 import Link from "next/link";
 import { hackathons, openSource, profile } from "@/lib/content";
-import { formatDate, type PostMeta } from "@/lib/posts";
+import type { PostMeta } from "@/lib/posts";
 
-const h2 = "text-lg font-semibold text-zinc-950 dark:text-zinc-50";
-import { chipBase, tagColor } from "@/lib/tag-colors";
+import { tagColor } from "@/lib/tag-colors";
+
+export const inlineLink =
+  "text-zinc-900 underline decoration-zinc-300 decoration-1 underline-offset-4 transition-[text-decoration-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:decoration-zinc-900 dark:text-zinc-100 dark:decoration-zinc-600 dark:hover:decoration-zinc-100";
+
+const sideLink =
+  "ms-auto font-sans text-[13px] text-zinc-400 transition-colors hover:text-zinc-950 dark:text-zinc-500 dark:hover:text-zinc-50";
+
+export function SectionHeader({
+  label,
+  count,
+  href,
+  linkText,
+  as: Tag = "h2",
+}: {
+  label: string;
+  count?: string;
+  href?: string;
+  linkText?: string;
+  as?: "h1" | "h2";
+}) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-x-2 font-mono text-[12px]">
+      <Tag className="text-zinc-500 dark:text-zinc-400">{label}</Tag>
+      {count && (
+        <span className="whitespace-nowrap tabular-nums text-zinc-400 dark:text-zinc-500">
+          <span aria-hidden="true" className="me-2 opacity-60">
+            /
+          </span>
+          {count}
+        </span>
+      )}
+      {href && (
+        <Link href={href} className={`group inline-flex items-center gap-1 ${sideLink}`}>
+          {linkText}
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="size-3 shrink-0 transition-transform duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 motion-reduce:transition-none"
+          >
+            <path d="M3.5 8h9M9 4.5 12.5 8 9 11.5" />
+          </svg>
+        </Link>
+      )}
+    </div>
+  );
+}
 
 export function AboutBlock() {
   return (
     <div className="mx-auto max-w-3xl text-left">
-      <h1 className={h2}>about</h1>
+      <SectionHeader as="h1" label="about" />
       <div className="mt-3 space-y-3 text-base leading-7 text-zinc-600 dark:text-zinc-400">
-        {profile.about.map((p) => (
-          <p key={p}>{p}</p>
+        {profile.about.map((segments, i) => (
+          <p key={i}>
+            {segments.map((s, j) =>
+              typeof s === "string" ? (
+                s
+              ) : (
+                <a key={j} href={s.href} target="_blank" rel="noreferrer" className={inlineLink}>
+                  {s.text}
+                </a>
+              ),
+            )}
+          </p>
         ))}
       </div>
     </div>
@@ -21,7 +81,7 @@ export function AboutBlock() {
 export function HackathonsBlock() {
   return (
     <section className="mt-10">
-      <h2 className={h2}>hackathons</h2>
+      <SectionHeader label="hackathons" count={String(hackathons.length)} />
       <ul className="mt-4 space-y-3">
         {hackathons.map((h) => (
           <li
@@ -56,23 +116,42 @@ const OpenIcon = () => (
   </svg>
 );
 
+const compact = new Intl.DateTimeFormat("en", { month: "short", day: "numeric" });
+const monthYear = (iso: string) => {
+  const d = new Date(`${iso}T00:00:00`);
+  return `${d.toLocaleString("en", { month: "short" })} '${String(d.getFullYear()).slice(2)}`;
+};
+const fmtCount = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, "")}k` : String(n));
+
 export function OpenSourceBlock() {
+  const merged = openSource.filter((c) => c.status === "merged").length;
+  const open = openSource.length - merged;
+  const count = [merged && `${merged} merged`, open && `${open} open`].filter(Boolean).join(" · ");
+
   return (
     <section className="mt-10">
-      <h2 className={h2}>open source</h2>
+      <SectionHeader label="open source" count={count} />
       <ul className="mt-4 divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-800 dark:border-zinc-800">
         {openSource.map((c) => (
           <li key={c.url}>
-            <a href={c.url} target="_blank" rel="noreferrer" className="group flex items-center gap-3 py-3 text-sm">
-              {c.status === "merged" ? <MergedIcon /> : <OpenIcon />}
-              <span className="shrink-0 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                {c.repo}#{c.number}
+            <a href={c.url} target="_blank" rel="noreferrer" className="group flex items-start gap-3 py-3 text-sm">
+              <span className="mt-0.5 shrink-0">{c.status === "merged" ? <MergedIcon /> : <OpenIcon />}</span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-zinc-700 transition-colors group-hover:text-zinc-950 dark:text-zinc-300 dark:group-hover:text-zinc-50">
+                  {c.title}
+                </span>
+                <span className="mt-0.5 block truncate font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                  {c.repo}#{c.number}
+                </span>
               </span>
-              <span className="min-w-0 truncate text-zinc-700 transition-colors group-hover:text-zinc-950 dark:text-zinc-300">
-                {c.title}
-              </span>
-              <span aria-hidden="true" className="ml-auto text-zinc-400 transition-transform group-hover:translate-x-0.5">
-                ↗
+              <span className="shrink-0 text-right font-mono text-xs tabular-nums">
+                <span className="block">
+                  <span className="text-emerald-600 dark:text-emerald-500">+{fmtCount(c.additions)}</span>{" "}
+                  <span className="text-red-600 dark:text-red-400">−{fmtCount(c.deletions)}</span>
+                </span>
+                <time dateTime={c.date} className="mt-0.5 block text-zinc-500 dark:text-zinc-400">
+                  {compact.format(new Date(`${c.date}T00:00:00`))}
+                </time>
               </span>
             </a>
           </li>
@@ -85,29 +164,26 @@ export function OpenSourceBlock() {
 export function WritingBlock({ posts }: { posts: PostMeta[] }) {
   return (
     <section className="mt-10">
-      <div className="flex items-baseline justify-between gap-4">
-        <h2 className={h2}>writing</h2>
-        <Link href="/writing" className="text-sm text-zinc-500 transition-colors hover:text-zinc-900">
-          all writing →
-        </Link>
-      </div>
-      <ul className="mt-4 space-y-6">
+      <SectionHeader label="writing" count={String(posts.length)} href="/writing" linkText="all writing" />
+      <ul className="mt-3 flex flex-col [@media(hover:hover)_and_(pointer:fine)]:[&:has(>li:hover)>li:not(:hover)]:opacity-45">
         {posts.slice(0, 3).map((post) => (
-          <li key={post.slug}>
+          <li key={post.slug} className="transition-opacity duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]">
             <Link
               href={`/writing/${post.slug}`}
-              className="group block"
+              className="group grid grid-cols-[4.5rem_1fr] items-baseline gap-3 py-2"
               style={{ "--accent": tagColor(post.tags[0] ?? post.slug).accent } as React.CSSProperties}
             >
-              <h3 className="font-medium text-zinc-900 transition-colors group-hover:text-[var(--accent)] dark:text-zinc-100">
-                {post.title}
-              </h3>
-              <p className="mt-1 line-clamp-2 text-sm leading-6 text-zinc-500 dark:text-zinc-400">{post.description}</p>
-              <div className="mt-2 flex items-center gap-2">
-                {post.tags[0] && <span className={`${chipBase} ${tagColor(post.tags[0]).chip}`}>{post.tags[0]}</span>}
-                <time dateTime={post.date} className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                  {formatDate(post.date)}
-                </time>
+              <time
+                dateTime={post.date}
+                className="font-mono text-[12px] tabular-nums text-zinc-400 transition-colors duration-150 group-hover:text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400"
+              >
+                {monthYear(post.date)}
+              </time>
+              <div className="min-w-0">
+                <h3 className="text-pretty text-[15px] leading-normal text-zinc-900 underline decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color] duration-150 group-hover:decoration-[var(--accent)] dark:text-zinc-100">
+                  {post.title}
+                </h3>
+                <p className="mt-0.5 truncate text-sm text-zinc-500 dark:text-zinc-400">{post.description}</p>
               </div>
             </Link>
           </li>

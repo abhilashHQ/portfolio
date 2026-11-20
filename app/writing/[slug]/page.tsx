@@ -33,7 +33,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeSlug, [rehypePrettyCode, { theme: "github-light", keepBackground: false }]],
+        rehypePlugins: [rehypeSlug, [rehypePrettyCode, { theme: { light: "github-light", dark: "github-dark" }, keepBackground: false }]],
       },
     },
   });
@@ -49,7 +49,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="mx-auto grid w-full max-w-5xl gap-12 lg:grid-cols-[minmax(0,640px)_1fr]">
         <article className="min-w-0">
           <nav className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
-            <Link href="/writing" className="transition-colors hover:text-zinc-900">
+            <Link href="/writing" className="transition-colors hover:text-zinc-900 dark:hover:text-zinc-100">
               writing
             </Link>
             {post.tags[0] && (
@@ -70,7 +70,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
 
           {post.cover && (
-            <div className="relative mt-8 aspect-[1200/630] overflow-hidden rounded-lg bg-zinc-100">
+            <div className="relative mt-8 aspect-[1200/630] overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-900">
               <Image src={post.cover} alt="" fill priority sizes="(min-width: 1024px) 640px, 100vw" className="object-cover" />
             </div>
           )}
@@ -90,7 +90,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800">
             <Link
               href="/writing"
-              className="inline-flex items-center rounded-md border border-zinc-200 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-950"
+              className="inline-flex items-center rounded-md border border-zinc-200 px-3 py-1.5 text-sm text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-950 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-50"
             >
               ← all writing
             </Link>
