@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { themeScript } from "@/lib/theme";
+import { BackToTop } from "@/components/back-to-top";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -25,10 +27,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", ibmPlexMono.variable, "font-sans", geist.variable)}
+      className={cn("dark h-full", "antialiased", ibmPlexMono.variable, "font-sans", geist.variable)}
+      style={{ colorScheme: "dark" }}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950">
         {children}
+        <BackToTop />
         <div
           aria-hidden="true"
           className="pointer-events-none fixed inset-x-0 top-0 z-50 h-8 border-b border-white/30 bg-white/45 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_0%,black_45%,transparent_100%)] dark:border-white/5 dark:bg-zinc-950/45 sm:h-12"
